@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModHeaderFileBuilder", "Mod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLIUtils", "CLIUtils\CLIUtils.csproj", "{BE7B52B9-C170-49E8-9060-07C6A5936FBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STMatiModLoader", "STMatiModLoader\STMatiModLoader.csproj", "{1B8F37E2-7E2C-4440-A033-7AF6FDE4F867}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{BE7B52B9-C170-49E8-9060-07C6A5936FBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE7B52B9-C170-49E8-9060-07C6A5936FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE7B52B9-C170-49E8-9060-07C6A5936FBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B8F37E2-7E2C-4440-A033-7AF6FDE4F867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B8F37E2-7E2C-4440-A033-7AF6FDE4F867}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B8F37E2-7E2C-4440-A033-7AF6FDE4F867}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B8F37E2-7E2C-4440-A033-7AF6FDE4F867}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

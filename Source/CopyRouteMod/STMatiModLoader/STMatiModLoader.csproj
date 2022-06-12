@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
@@ -12,11 +11,5 @@
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
       <OutputPath>..\..\..\bin\$(AssemblyName)\Release</OutputPath>
     </PropertyGroup>
-
-    <ItemGroup>
-      <Reference Include="Sweet Transit">
-        <HintPath>..\..\..\..\SweetTransit\Sweet Transit.dll</HintPath>
-      </Reference>
-    </ItemGroup>
 
 </Project>
