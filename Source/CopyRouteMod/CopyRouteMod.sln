@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyRouteMod", "CopyRouteMo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModHeaderFileBuilder", "ModHeaderFileBuilder\ModHeaderFileBuilder.csproj", "{E5AF153B-A1C3-421C-97DA-B5751450D9DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLIUtils", "CLIUtils\CLIUtils.csproj", "{BE7B52B9-C170-49E8-9060-07C6A5936FBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{E5AF153B-A1C3-421C-97DA-B5751450D9DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5AF153B-A1C3-421C-97DA-B5751450D9DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5AF153B-A1C3-421C-97DA-B5751450D9DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE7B52B9-C170-49E8-9060-07C6A5936FBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE7B52B9-C170-49E8-9060-07C6A5936FBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE7B52B9-C170-49E8-9060-07C6A5936FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE7B52B9-C170-49E8-9060-07C6A5936FBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
