@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace STModLoaderInjection
 {
@@ -6,7 +7,7 @@ namespace STModLoaderInjection
     {
         public static void Throw()
         {
-            throw new Exception();
+            Assembly.Load("dasdasd");
         }
     }
 }
