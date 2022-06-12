@@ -1,0 +1,5 @@
+Mods
+{
+  CopyRouteMod=Copy Route;
+  CopyRouteMod_description=Press Ctrl+D in Route Editor Window to duplicate selected route;
+}
