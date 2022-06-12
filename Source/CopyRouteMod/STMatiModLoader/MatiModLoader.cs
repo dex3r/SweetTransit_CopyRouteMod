@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace STMatiModLoader
 {
-    public static class ModLoader
+    public static class MatiModLoader
     {
         private const string MatiModInterfaceTypeName = "IMatiMod";
         private const string MatiModInterfaceLoadMethodName = "Load";
