@@ -12,6 +12,8 @@ namespace CopyRouteMod
         public void Load()
         {
             Console.WriteLine($"{nameof(CopyRouteModEntryPoint)} loaded");
+
+            Sweet_Transit.Main.main.Components.Add(new CopyRouteGameComponent());
         }
     }
 }

@@ -40,10 +40,17 @@ namespace CLIUtils
             gameProcess.StartInfo = new ProcessStartInfo
             {
                 WorkingDirectory = gameDirectory,
-                FileName = gameExePath
+                FileName = gameExePath,
+                RedirectStandardOutput = true,
             };
 
             gameProcess.Start();
+
+            while (!gameProcess.StandardOutput.EndOfStream)
+            {
+                string line = gameProcess.StandardOutput.ReadLine();
+                Console.WriteLine("[GAME] " + line);
+            }
 
             if(gameProcess == null)
             {

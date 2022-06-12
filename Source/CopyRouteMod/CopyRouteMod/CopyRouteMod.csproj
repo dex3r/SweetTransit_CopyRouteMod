@@ -12,4 +12,19 @@
       <OutputPath>..\..\..\bin\$(AssemblyName)\</OutputPath>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Reference Include="MonoGame.Framework">
+        <HintPath>..\..\..\..\SweetTransit\MonoGame.Framework.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="STMG">
+        <HintPath>..\..\..\..\SweetTransit\STMG.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+      <Reference Include="Sweet Transit">
+        <HintPath>..\..\..\..\SweetTransit\Sweet Transit.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+    </ItemGroup>
+
 </Project>
