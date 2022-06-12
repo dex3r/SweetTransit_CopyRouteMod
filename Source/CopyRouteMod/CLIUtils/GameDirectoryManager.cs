@@ -33,11 +33,18 @@ namespace CLIUtils
         public static void LaunchGame()
         {
             string gameDirectory = GetGameDirectoryPath();
-            string gameExeDirectory = Path.Combine(gameDirectory, "Sweet Transit.exe");
+            string gameExePath = Path.Combine(gameDirectory, "Sweet Transit.exe");
 
             Console.WriteLine("Launching game...");
-            Process gameProcess = Process.Start(gameExeDirectory);
-            
+            Process gameProcess = new Process();
+            gameProcess.StartInfo = new ProcessStartInfo
+            {
+                WorkingDirectory = gameDirectory,
+                FileName = gameExePath
+            };
+
+            gameProcess.Start();
+
             if(gameProcess == null)
             {
                 throw new Exception("Failed to launch the game");

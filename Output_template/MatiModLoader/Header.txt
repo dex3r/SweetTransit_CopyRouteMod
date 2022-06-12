@@ -1,2 +1,2 @@
-name=STMatiModLoader;
+name=MatiModLoader;
 mod_version=0,0,1;

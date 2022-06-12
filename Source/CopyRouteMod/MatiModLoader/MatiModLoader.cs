@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace MatiModLoader
@@ -11,29 +12,48 @@ namespace MatiModLoader
         
         public static void LoadMod(string modRootDirectory)
         {
+            if (modRootDirectory == "Base")
+            {
+                return;
+            }
+            
             foreach (string dllPath in Directory.GetFiles(modRootDirectory, "*.dll", SearchOption.AllDirectories))
             {
-                TryToLoadDll(dllPath);
+                TryToLoadDllSafe(dllPath, modRootDirectory);
             }
         }
 
-        private static void TryToLoadDll(string dllPath)
+        private static void TryToLoadDllSafe(string dllPath, string modName)
+        {
+            try
+            {
+                TryToLoadDll(dllPath, modName);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+                //File.WriteAllText("crash.txt", e.ToString());
+            }
+        }
+        
+        private static void TryToLoadDll(string dllPath, string modName)
         {
             Assembly loadedAssembly;
             
             try
             {
-                loadedAssembly = AppDomain.CurrentDomain.Load(dllPath);
+                loadedAssembly = Assembly.LoadFrom(dllPath);
             }
             catch (Exception e)
             {
                 throw new ModLoaderException($"Failed to load dotnet assembly under path '{dllPath}'", e);
             }
 
-            InitializeMod(loadedAssembly);
+            InitializeMod(loadedAssembly, modName);
         }
 
-        private static void InitializeMod(Assembly modAssembly)
+        private static void InitializeMod(Assembly modAssembly, string modName)
         {
             bool anyFound = false;
             
@@ -48,18 +68,24 @@ namespace MatiModLoader
             if (!anyFound)
             {
                 throw new ModLoaderException(
-                    $"Loaded mod could not be initialized: no public classes implementing '{MatiModInterfaceTypeName}' found. At least one is required");
+                    $"Loaded mod '{modName}' could not be initialized: " +
+                    $"no public classes implementing '{MatiModInterfaceTypeName}' found. At least one is required");
             }
         }
 
         private static bool TryInitializeModType(TypeInfo typeInfo)
         {
-            Type modType = typeInfo.GetInterface(MatiModInterfaceTypeName);
-
-            if (modType == null)
+            if (typeInfo == null)
             {
                 return false;
             }
+
+            if (typeInfo.ImplementedInterfaces.Any(x => x.Name == MatiModInterfaceTypeName) == false)
+            {
+                return false;
+            }
+
+            Type modType = typeInfo.AsType();
 
             object modObject;
             
@@ -88,7 +114,7 @@ namespace MatiModLoader
 
             try
             {
-                loadMethod.Invoke(modObject, new object?[0]);
+                loadMethod.Invoke(modObject, new object[0]);
             }
             catch (Exception e)
             {
