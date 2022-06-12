@@ -6,11 +6,11 @@
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <OutputPath>..\..\..\bin\STMatiModLoader\Debug\</OutputPath>
+      <OutputPath>..\..\..\bin\$(AssemblyName)\</OutputPath>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <OutputPath>..\..\..\bin\STMatiModLoader\Release\</OutputPath>
+      <OutputPath>..\..\..\bin\$(AssemblyName)\</OutputPath>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,7 +19,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\CLIUtils\CLIUtils.csproj" />
-      <ProjectReference Include="..\STMatiModLoader\STMatiModLoader.csproj" />
+      <ProjectReference Include="..\MatiModLoader\MatiModLoader.csproj" />
     </ItemGroup>
 
 </Project>

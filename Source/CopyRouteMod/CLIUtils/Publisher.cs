@@ -12,7 +12,7 @@ namespace CLIUtils
 
         public static string GetProjectBaseDirectory()
         {
-            string baseDirectory = Path.Combine(Environment.CurrentDirectory, "../../../../");
+            string baseDirectory = Path.Combine(Environment.CurrentDirectory, "../../../");
             CheckBaseDirectory(baseDirectory);
 
             return baseDirectory;
@@ -32,11 +32,31 @@ namespace CLIUtils
             string outputTemplateDirectory = Path.Combine(baseDirectory, "Output_template");
 
             Console.WriteLine("Cleaning output directory...");
-            Directory.Delete(outputDirectory, true);
+            
+            if (Directory.Exists(outputDirectory))
+            {
+                Directory.Delete(outputDirectory, true);
+            }
+
             Directory.CreateDirectory(outputDirectory);
 
             Console.WriteLine("Copying Output Template to Output...");
             IoUtils.CopyAllFiles(outputTemplateDirectory, outputDirectory);
+            
+            Console.WriteLine("Copying MatiModLoader to output...");
+            CopyModDlls(outputDirectory, "MatiModLoader");
+            
+            Console.WriteLine("Copying CopyRouteMod to output...");
+            CopyModDlls(outputDirectory, "CopyRouteMod");
+        }
+
+        private void CopyModDlls(string outputDirectory, string modName)
+        {
+            string baseDirectory = GetProjectBaseDirectory();
+            string modDirectory = Path.Combine(baseDirectory, $"bin/{modName}/");
+            
+            string modOutputDirectory = Path.Combine(outputDirectory, modName);
+            IoUtils.CopyAllFiles(modDirectory, modOutputDirectory);
         }
 
         private static void CheckBaseDirectory(string baseDirectoryPath)

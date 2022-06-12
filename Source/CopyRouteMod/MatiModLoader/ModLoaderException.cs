@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace STMatiModLoader
+namespace MatiModLoader
 {
     public class ModLoaderException : Exception
     {

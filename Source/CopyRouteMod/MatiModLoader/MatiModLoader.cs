@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 
-namespace STMatiModLoader
+namespace MatiModLoader
 {
     public static class MatiModLoader
     {

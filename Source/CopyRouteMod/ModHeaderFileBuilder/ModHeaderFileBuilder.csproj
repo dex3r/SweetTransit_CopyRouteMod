@@ -6,11 +6,11 @@
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <OutputPath>..\..\..\bin\$(AssemblyName)\Release</OutputPath>
+      <OutputPath>..\..\..\bin\$(AssemblyName)\</OutputPath>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <OutputPath>..\..\..\bin\$(AssemblyName)\Debug</OutputPath>
+      <OutputPath>..\..\..\bin\$(AssemblyName)\</OutputPath>
     </PropertyGroup>
 
     <ItemGroup>

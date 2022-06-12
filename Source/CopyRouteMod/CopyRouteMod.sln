@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModHeaderFileBuilder", "Mod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLIUtils", "CLIUtils\CLIUtils.csproj", "{BE7B52B9-C170-49E8-9060-07C6A5936FBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STMatiModLoader", "STMatiModLoader\STMatiModLoader.csproj", "{1B8F37E2-7E2C-4440-A033-7AF6FDE4F867}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatiModLoader", "MatiModLoader\MatiModLoader.csproj", "{1B8F37E2-7E2C-4440-A033-7AF6FDE4F867}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STModLoaderInjection", "STModLoaderInjection\STModLoaderInjection.csproj", "{B18B282C-F29A-4A8D-9881-53BF335C15C8}"
 EndProject

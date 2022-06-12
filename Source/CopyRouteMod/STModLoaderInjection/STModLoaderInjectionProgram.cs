@@ -5,7 +5,6 @@ using System.Reflection;
 using CLIUtils;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
-using Mono.Cecil.Rocks;
 
 namespace STModLoaderInjection
 {

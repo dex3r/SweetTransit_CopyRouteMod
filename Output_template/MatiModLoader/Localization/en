@@ -1,0 +1,5 @@
+Mods
+{
+  MatiModLoader=Mati Mod Loader;
+  MatiModLoader_description=Loads assemblies from mods;
+}
