@@ -17,6 +17,21 @@ namespace CLIUtils
                 Publisher.Publish();
                 return 0;
             }
+
+            if (args[0].ToLower() == "copytogame")
+            {
+                Publisher.Publish();
+                GameDirectoryManager.CopyModToGame();
+                return 0;
+            }
+            
+            if (args[0].ToLower() == "copytogame&launch")
+            {
+                Publisher.Publish();
+                GameDirectoryManager.CopyModToGame();
+                GameDirectoryManager.LaunchGame();
+                return 0;
+            }
             
             Console.WriteLine($"Unknown argument {args[0]}");
             return -3;

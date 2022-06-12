@@ -1,2 +1,2 @@
-name=ModHeaderBuilder;
+name=CopyRouteMod;
 mod_version=0,0,2;
