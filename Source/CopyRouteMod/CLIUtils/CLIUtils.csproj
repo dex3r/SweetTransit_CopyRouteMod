@@ -20,6 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\MatiModLoaderPatcher\MatiModLoaderPatcher.csproj" />
       <ProjectReference Include="..\STDepsPatcher\STDepsPatcher.csproj" />
     </ItemGroup>
 

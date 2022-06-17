@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using MatiModLoaderPatcher;
 using STDepsPatcher;
 
 namespace CLIUtils
@@ -38,6 +40,11 @@ namespace CLIUtils
             {
                 SweetTransitDepsJsonPatcher.PatchDepsJson(GameDirectoryManager.GetDepsJsonPath());
                 return 0;
+            }
+
+            if (args[0].ToLower() == "patchmatimodloader")
+            {
+                Publisher.PatchMatiModLoader();
             }
             
             Console.WriteLine($"Unknown argument {args[0]}");

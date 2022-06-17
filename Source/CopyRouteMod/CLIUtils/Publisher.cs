@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using MatiModLoaderPatcher;
 
 namespace CLIUtils
 {
@@ -48,8 +49,17 @@ namespace CLIUtils
             
             Console.WriteLine("Copying CopyRouteMod to output...");
             CopyModDlls(outputDirectory, "CopyRouteMod");
+
+            Console.WriteLine("Patching MatiModLoader...");
+            PatchMatiModLoader();
         }
 
+        public static string GetModOriginalBinDirectory(string modName)
+        {
+            string modDirectory = Path.Combine(GetProjectBaseDirectory(), $"bin/{modName}/");
+            return modDirectory;
+        }
+        
         private void CopyModDlls(string outputDirectory, string modName)
         {
             string baseDirectory = GetProjectBaseDirectory();
@@ -67,6 +77,12 @@ namespace CLIUtils
                 // Sanity check - break if program ended up in wrong directory
                 throw new Exception($"Unexpected output directory path: '{baseDirectoryPath}' Full: {Path.GetFullPath(baseDirectoryPath)}");
             }
+        }
+        
+        public static void PatchMatiModLoader()
+        {
+            string matiModLoaderDllPath = Path.Combine(Publisher.GetOutputDirectory(), "MatiModLoader", "netcoreapp3.1", "MatiModLoader.dll");
+            Patcher.PatchMatiModLoader(matiModLoaderDllPath);
         }
     }
 }
