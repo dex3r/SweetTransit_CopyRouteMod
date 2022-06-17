@@ -19,4 +19,8 @@
       </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\STDepsPatcher\STDepsPatcher.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -1,4 +1,5 @@
 ﻿using System;
+using STDepsPatcher;
 
 namespace CLIUtils
 {
@@ -30,6 +31,12 @@ namespace CLIUtils
                 Publisher.Publish();
                 GameDirectoryManager.CopyModToGame();
                 GameDirectoryManager.LaunchGame();
+                return 0;
+            }
+
+            if (args[0].ToLower() == "patchdeps")
+            {
+                SweetTransitDepsJsonPatcher.PatchDepsJson(GameDirectoryManager.GetDepsJsonPath());
                 return 0;
             }
             

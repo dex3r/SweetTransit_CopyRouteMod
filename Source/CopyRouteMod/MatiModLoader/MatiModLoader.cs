@@ -68,7 +68,7 @@ namespace MatiModLoader
             if (!anyFound)
             {
                 throw new ModLoaderException(
-                    $"Loaded mod '{modName}' could not be initialized: " +
+                    $"Loaded xmod '{modName}' could not be initialized: " +
                     $"no public classes implementing '{MatiModInterfaceTypeName}' found. At least one is required");
             }
         }

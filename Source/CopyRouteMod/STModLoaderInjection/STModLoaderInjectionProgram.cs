@@ -52,23 +52,23 @@ namespace STModLoaderInjection
             //loadMethodProcessor.InsertBefore(firstInstruction, call);
             //loadMethodProcessor.InsertBefore(firstInstruction, pop);
 //
-            //var loadModMethod = module
-            //    .ImportReference(typeof(MatiModLoader.MatiModLoader)
-            //        .GetMethod(nameof(MatiModLoader.MatiModLoader.LoadMod), new []{typeof(string)}));
+            var loadModMethod = module
+                .ImportReference(typeof(MatiModLoader.MatiModLoader)
+                    .GetMethod(nameof(MatiModLoader.MatiModLoader.LoadMod), new []{typeof(string)}));
 //
-            //var ldarg0 = loadMethodProcessor.Create(OpCodes.Ldarg_0);
-            //var callLoadMod = loadMethodProcessor.Create(OpCodes.Call, loadModMethod);
-            //var nop = loadMethodProcessor.Create(OpCodes.Nop);
+            var ldarg0 = loadMethodProcessor.Create(OpCodes.Ldarg_0);
+            var callLoadMod = loadMethodProcessor.Create(OpCodes.Call, loadModMethod);
+            var nop = loadMethodProcessor.Create(OpCodes.Nop);
 //
             //loadMethodProcessor.InsertBefore(firstInstruction, ldarg0);
             //loadMethodProcessor.InsertBefore(firstInstruction, callLoadMod);
             //loadMethodProcessor.InsertBefore(firstInstruction, nop);
 
-            MethodDefinition methodToCall = AddMatiLoadModMethod(module.Assembly, loadingType);
-
-            var ldarg0 = loadMethodProcessor.Create(OpCodes.Ldarg_0);
-            var callLoadMod = loadMethodProcessor.Create(OpCodes.Call, methodToCall);
-            var nop = loadMethodProcessor.Create(OpCodes.Nop);
+            //MethodDefinition methodToCall = AddMatiLoadModMethod(module.Assembly, loadingType);
+//
+            //var ldarg0 = loadMethodProcessor.Create(OpCodes.Ldarg_0);
+            //var callLoadMod = loadMethodProcessor.Create(OpCodes.Call, methodToCall);
+            //var nop = loadMethodProcessor.Create(OpCodes.Nop);
             
             loadMethodProcessor.InsertBefore(firstInstruction, ldarg0);
             loadMethodProcessor.InsertBefore(firstInstruction, callLoadMod);

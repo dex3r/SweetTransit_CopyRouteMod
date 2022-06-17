@@ -26,8 +26,26 @@ namespace CLIUtils
 
             string dataDirectory = Path.Combine(gameDirectory, "Data");
 
-            Console.WriteLine("Copying mod output to game directory...");
+            Console.WriteLine("Copying mod output to /Data game directory...");
             IoUtils.CopyAllFiles(modPublishOutputDir, dataDirectory, true);
+
+            string matiModLoaderDllName = "MatiModLoader.dll";
+            Console.WriteLine($"Copying {matiModLoaderDllName} to root game directory");
+            CopyMatiModLoaderDll(modPublishOutputDir, gameDirectory, matiModLoaderDllName);
+        }
+
+        private static void CopyMatiModLoaderDll(string modPublishOutputDir, string gameDirectory, string matiModLoaderDllName)
+        {
+            string sourceDllPath = Path.Combine(modPublishOutputDir, "MatiModLoader/netcoreapp3.1", matiModLoaderDllName);
+
+            if (File.Exists(sourceDllPath) == false)
+            {
+                throw new Exception("Failed to copy MatiModLoader.dll. File does not exist under " + sourceDllPath);
+            }
+
+            string targetDllPath = Path.Combine(gameDirectory, matiModLoaderDllName);
+
+            File.Copy(sourceDllPath, targetDllPath, true);
         }
 
         public static void LaunchGame()
@@ -62,5 +80,7 @@ namespace CLIUtils
             
             Console.WriteLine("Game exited with code: " + gameProcess.ExitCode);
         }
+
+        public static string GetDepsJsonPath() => Path.Combine(GetGameDirectoryPath(), "Sweet Transit.deps.json");
     }
 }

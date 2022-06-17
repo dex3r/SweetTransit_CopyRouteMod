@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatiModLoader", "MatiModLoa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STModLoaderInjection", "STModLoaderInjection\STModLoaderInjection.csproj", "{B18B282C-F29A-4A8D-9881-53BF335C15C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STDepsPatcher", "STDepsPatcher\STDepsPatcher.csproj", "{9B0EB7FA-6D53-46EF-8B01-477CCA4059C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{B18B282C-F29A-4A8D-9881-53BF335C15C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B18B282C-F29A-4A8D-9881-53BF335C15C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B18B282C-F29A-4A8D-9881-53BF335C15C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B0EB7FA-6D53-46EF-8B01-477CCA4059C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B0EB7FA-6D53-46EF-8B01-477CCA4059C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B0EB7FA-6D53-46EF-8B01-477CCA4059C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B0EB7FA-6D53-46EF-8B01-477CCA4059C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

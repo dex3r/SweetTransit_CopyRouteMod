@@ -16,8 +16,14 @@ namespace CopyRouteMod
         {
             if (Main.keys.GetKey(Keys.D, KeyState.Pressed))
             {
+                OnCopyRouteButtonPressed();
                 Console.WriteLine("D pressed!");
             }
+        }
+
+        private void OnCopyRouteButtonPressed()
+        { 
+           //if(Main.ui.)
         }
 
         public bool Enabled => true;
