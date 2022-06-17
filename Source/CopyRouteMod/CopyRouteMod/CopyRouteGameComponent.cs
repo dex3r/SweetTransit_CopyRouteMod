@@ -22,8 +22,7 @@ namespace CopyRouteMod
         }
 
         private void OnCopyRouteButtonPressed()
-        { 
-           //if(Main.ui.)
+        {
         }
 
         public bool Enabled => true;

@@ -1,7 +1,6 @@
 ﻿using System;
-using System.IO;
-using MatiModLoaderPatcher;
 using STDepsPatcher;
+using STModLoaderInjection;
 
 namespace CLIUtils
 {
@@ -15,40 +14,56 @@ namespace CLIUtils
                 return -2;
             }
 
-            if (args[0].ToLower() == "publish")
+            bool IsCmd(string command)
             {
-                Publisher.Publish();
-                return 0;
+                return args[0].Equals(command, StringComparison.InvariantCultureIgnoreCase);
             }
 
-            if (args[0].ToLower() == "copytogame")
+            if (IsCmd("Publish"))
+            {
+                Publisher.Publish();
+            }
+            else if (IsCmd("CopyToGame"))
             {
                 Publisher.Publish();
                 GameDirectoryManager.CopyModToGame();
-                return 0;
             }
-            
-            if (args[0].ToLower() == "copytogame&launch")
+            else if (IsCmd("CopyToGame&Launch"))
             {
                 Publisher.Publish();
                 GameDirectoryManager.CopyModToGame();
                 GameDirectoryManager.LaunchGame();
-                return 0;
+            }
+            else if (IsCmd("PatchDeps"))
+            {
+                PatchDeps();
+            }
+            else if (IsCmd("InjectModLoaderIntoGameDll"))
+            {
+                InjectModLoader();
+            }
+            else if (IsCmd("InstallModLoader"))
+            {
+                PatchDeps();
+                InjectModLoader();
+            }
+            else
+            {
+                Console.WriteLine($"Unknown argument {args[0]}");
+                return -3;
             }
 
-            if (args[0].ToLower() == "patchdeps")
-            {
-                SweetTransitDepsJsonPatcher.PatchDepsJson(GameDirectoryManager.GetDepsJsonPath());
-                return 0;
-            }
+            return 0;
+        }
 
-            if (args[0].ToLower() == "patchmatimodloader")
-            {
-                Publisher.PatchMatiModLoader();
-            }
-            
-            Console.WriteLine($"Unknown argument {args[0]}");
-            return -3;
+        private static void InjectModLoader()
+        {
+            STModLoaderInjector.InjectModLoaderToSweetTransitDll(GameDirectoryManager.GetGameDirectoryPath());
+        }
+
+        private static void PatchDeps()
+        {
+            SweetTransitDepsJsonPatcher.PatchDepsJson(GameDirectoryManager.GetDepsJsonPath());
         }
     }
 }

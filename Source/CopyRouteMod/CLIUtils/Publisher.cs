@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using MatiModLoaderPatcher;
 
 namespace CLIUtils
 {
@@ -49,24 +48,34 @@ namespace CLIUtils
             
             Console.WriteLine("Copying CopyRouteMod to output...");
             CopyModDlls(outputDirectory, "CopyRouteMod");
-
-            Console.WriteLine("Patching MatiModLoader...");
-            PatchMatiModLoader();
-        }
-
-        public static string GetModOriginalBinDirectory(string modName)
-        {
-            string modDirectory = Path.Combine(GetProjectBaseDirectory(), $"bin/{modName}/");
-            return modDirectory;
+            
+            string matiModLoaderDllName = "MatiModLoader.dll";
+            Console.WriteLine($"Copying {matiModLoaderDllName} to root output directory...");
+            CopyMatiModLoaderDll(GetOutputDirectory(), matiModLoaderDllName);
         }
         
+        private static void CopyMatiModLoaderDll(string outputDirectory, string matiModLoaderDllName)
+        {
+            string sourceDllPath = Path.Combine(GetModOutputDirectory(outputDirectory, "MatiModLoader"), "netcoreapp3.1", matiModLoaderDllName);
+
+            if (File.Exists(sourceDllPath) == false)
+            {
+                throw new Exception("Failed to copy MatiModLoader.dll. File does not exist under " + sourceDllPath);
+            }
+
+            string targetDllPath = Path.Combine(outputDirectory, matiModLoaderDllName);
+
+            File.Copy(sourceDllPath, targetDllPath, true);
+        }
+
+        public static string GetModOutputDirectory(string outputDirectory, string modName) => Path.Combine(outputDirectory, "Data", modName);
+
         private void CopyModDlls(string outputDirectory, string modName)
         {
             string baseDirectory = GetProjectBaseDirectory();
             string modDirectory = Path.Combine(baseDirectory, $"bin/{modName}/");
             
-            string modOutputDirectory = Path.Combine(outputDirectory, modName);
-            IoUtils.CopyAllFiles(modDirectory, modOutputDirectory);
+            IoUtils.CopyAllFiles(modDirectory, GetModOutputDirectory(outputDirectory, modName));
         }
 
         private static void CheckBaseDirectory(string baseDirectoryPath)
@@ -77,12 +86,6 @@ namespace CLIUtils
                 // Sanity check - break if program ended up in wrong directory
                 throw new Exception($"Unexpected output directory path: '{baseDirectoryPath}' Full: {Path.GetFullPath(baseDirectoryPath)}");
             }
-        }
-        
-        public static void PatchMatiModLoader()
-        {
-            string matiModLoaderDllPath = Path.Combine(Publisher.GetOutputDirectory(), "MatiModLoader", "netcoreapp3.1", "MatiModLoader.dll");
-            Patcher.PatchMatiModLoader(matiModLoaderDllPath);
         }
     }
 }

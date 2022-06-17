@@ -10,8 +10,12 @@ namespace MatiModLoader
         private const string MatiModInterfaceTypeName = "IMatiMod";
         private const string MatiModInterfaceLoadMethodName = "Load";
         
+        private static bool _hasBeenInitialized;
+        
         public static void LoadMod(string modRootDirectory)
         {
+            Initialize();
+            
             if (modRootDirectory == "Base")
             {
                 return;
@@ -23,6 +27,18 @@ namespace MatiModLoader
             {
                 TryToLoadDllSafe(dllPath, modRootDirectory);
             }
+        }
+
+        private static void Initialize()
+        {
+            if (_hasBeenInitialized)
+            {
+                return;
+            }
+            
+            _hasBeenInitialized = true;
+            
+            ModLoaderLog.Initialize();
         }
 
         private static void TryToLoadDllSafe(string dllPath, string modName)

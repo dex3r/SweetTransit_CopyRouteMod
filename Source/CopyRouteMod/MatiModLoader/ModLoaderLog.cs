@@ -3,7 +3,7 @@ using System.IO;
 
 namespace MatiModLoader
 {
-    public static class Startup
+    public class ModLoaderLog
     {
         public static void Initialize()
         {
@@ -18,8 +18,6 @@ namespace MatiModLoader
             string initLine = $"MatiModLoader initialized at {DateTime.Now}";
             Console.WriteLine(initLine);
             File.AppendAllLines(logPath, new string[] { initLine });
-            
-            //throw new Exception("EXCEPTION!");
         }
     }
 }
